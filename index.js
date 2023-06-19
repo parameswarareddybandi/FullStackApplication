@@ -14,17 +14,19 @@ var Email = "";
 var Phone = "";
 var RollNo = "";
 
-app.get('/', function (req, res) {
-    
-    mongoose.connect(process.env.MONGO_URI)
-    .then(()=> {
-        console.log("Connected to mongoDB.");
+mongoose.connect(process.env.MONGO_URI)
+.then(()=> {
+    console.log("Connected to mongoDB.");
+    app.listen(process.env.PORT, function () {
+        console.log("Server Started on port : 3000")
     })
-    .catch((err)=> {
-        console.log(err);
-    })
+})
+.catch((err)=> {
+    console.log(err);
+})
 
-   
+app.get('/', function (req, res) {
+ 
     res.render("home", { yourName: Name, yourEmail: Email, yourPhone: Phone, yourRollNo: RollNo })
 })
 
@@ -55,8 +57,4 @@ app.post('/', function (req, res) {
 
     res.redirect("/");
 
-})
-
-app.listen(process.env.PORT, function () {
-    console.log("Server Started on port : 3000")
 })
