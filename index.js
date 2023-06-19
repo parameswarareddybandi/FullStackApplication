@@ -15,6 +15,15 @@ var Phone = "";
 var RollNo = "";
 
 app.get('/', function (req, res) {
+    
+    mongoose.connect(process.env.MONGO_URI)
+    .then(()=> {
+        console.log("Connected to mongoDB.");
+    })
+    .catch((err)=> {
+        console.log(err);
+    })
+
    
     res.render("home", { yourName: Name, yourEmail: Email, yourPhone: Phone, yourRollNo: RollNo })
 })
@@ -25,17 +34,6 @@ app.post('/', function (req, res) {
     Email = req.body.email;
     Phone = req.body.phone;
     RollNo = req.body.rollno;
-
-    mongoose.connect(process.env.MONGO_URI)
-    .then(()=> {
-        console.log("Connected to mongoDB.");
-        app.listen(process.env.PORT, function () {
-            console.log("Server Started on port : 3000")
-        })
-    })
-    .catch((err)=> {
-        console.log(err);
-    })
 
     const formSchema = mongoose.Schema({
         name : String,
