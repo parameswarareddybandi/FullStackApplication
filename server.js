@@ -16,11 +16,17 @@ var Email = "";
 var Phone = "";
 var RollNo = "";
 
-mongoose.connect(process.env.MONGO_URI, ()=> {
-    app.listen(process.env.PORT, function () {
-        console.log("Server Started.")
-    })
-})
+
+const connectDB = async () => {
+    try {
+      const conn = await mongoose.connect(process.env.MONGO_URI);
+      console.log(`MongoDB Connected: ${conn.connection.host}`);
+    } catch (error) {
+      console.log(error);
+      process.exit(1);
+    }
+}
+
 
 app.get('/', function (req, res) {
  
@@ -54,4 +60,10 @@ app.post('/', function (req, res) {
 
     res.redirect("/");
 
+})
+
+connectDB().then(() => {
+    app.listen(process.env.PORT, () => {
+        console.log("listening for requests");
+    })
 })
