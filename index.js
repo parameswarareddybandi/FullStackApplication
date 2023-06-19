@@ -28,7 +28,10 @@ app.post('/', function (req, res) {
 
     mongoose.connect(process.env.MONGO_URI)
     .then(()=> {
-        console.log("Form Data is stored successfully in mongoDB.");
+        console.log("Connected to mongoDB.");
+        app.listen(process.env.PORT, function () {
+            console.log("Server Started on port : 3000")
+        })
     })
     .catch((err)=> {
         console.log(err);
