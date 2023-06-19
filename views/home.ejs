@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #001e4d;
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        fieldset {
+            margin-bottom: 20px;
+        }
+
+        legend {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .checkbox-group label,
+        .radio-group label {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .output {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 300px;
+            height: 300px;
+            background: white;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Registration Form</h1> 
+    <form action="/" method="post">
+        <fieldset>
+            <legend>Participant Information</legend>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="rollno">Roll No:</label>
+            <input type="text" id="rollno" name="rollno" required>
+        </fieldset>
+
+        <input type="submit" value="Submit" class="submit-button">
+    </form>
+    <div class="output">
+        <p>
+        <b><%= yourName %> <br>
+        <%= yourEmail %> <br>
+        <%= yourPhone %> <br>
+        <%= yourRollNo %></b> <br>
+        </p>
+    </div>
+</body>
+
+</html>
