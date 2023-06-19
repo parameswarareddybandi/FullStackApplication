@@ -9,20 +9,17 @@ const app = express()
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: true }))
 
+mongoose.set('strictQuery', false);
+
 var Name = "";
 var Email = "";
 var Phone = "";
 var RollNo = "";
 
-mongoose.connect(process.env.MONGO_URI)
-.then(()=> {
-    console.log("Connected to mongoDB.");
+mongoose.connect(process.env.MONGO_URI, ()=> {
     app.listen(process.env.PORT, function () {
-        console.log("Server Started on port : 3000")
+        console.log("Server Started.")
     })
-})
-.catch((err)=> {
-    console.log(err);
 })
 
 app.get('/', function (req, res) {
